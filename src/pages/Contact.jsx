@@ -2,6 +2,33 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import {
+    Mail,
+    Phone,
+    MapPin,
+    Clock,
+    Globe,
+    Smartphone,
+    Palette,
+    Settings,
+    CheckCircle,
+    ArrowRight,
+    ArrowLeft,
+    Send,
+    Loader2,
+    DollarSign,
+    HelpCircle,
+    Shield,
+    Zap,
+    Users,
+    Target,
+    Handshake,
+    Lightbulb,
+    Building,
+    MapIcon,
+    Star,
+    Calendar
+} from 'lucide-react'
 
 function Contact() {
     const [currentStep, setCurrentStep] = useState(1);
@@ -42,7 +69,7 @@ function Contact() {
     const serviceConfigs = {
         'website': {
             name: 'Website Development',
-            icon: '🌐',
+            icon: Globe,
             basePrice: 2500,
             pricePerPage: 500,
             projectTypes: [
@@ -63,7 +90,7 @@ function Contact() {
         },
         'mobile': {
             name: 'Mobile App Development',
-            icon: '📱',
+            icon: Smartphone,
             basePrice: 8000,
             pricePerPage: 800,
             projectTypes: [
@@ -83,7 +110,7 @@ function Contact() {
         },
         'uiux': {
             name: 'UI/UX Design',
-            icon: '🎨',
+            icon: Palette,
             basePrice: 1500,
             pricePerPage: 300,
             projectTypes: [
@@ -102,7 +129,7 @@ function Contact() {
         },
         'custom': {
             name: 'Custom Solution',
-            icon: '⚙️',
+            icon: Settings,
             basePrice: 5000,
             pricePerPage: 1000,
             projectTypes: [
@@ -246,60 +273,102 @@ function Contact() {
 
     const contactInfo = [
         {
-            icon: '📧',
+            icon: Mail,
             title: 'Email',
             content: 'hello@benubina.com',
             link: 'mailto:hello@benubina.com',
+            color: 'text-blue-600'
         },
         {
-            icon: '📞',
+            icon: Phone,
             title: 'Phone',
             content: '+1 (555) 123-4567',
             link: 'tel:+15551234567',
+            color: 'text-green-600'
         },
         {
-            icon: '📍',
+            icon: MapPin,
             title: 'Office',
             content: '123 Tech Street, Silicon Valley, CA 94025',
             link: '#',
+            color: 'text-purple-600'
         },
         {
-            icon: '⏰',
+            icon: Clock,
             title: 'Business Hours',
             content: 'Mon - Fri: 9:00 AM - 6:00 PM PST',
             link: '#',
+            color: 'text-orange-600'
         },
     ];
 
     return (
         <div className="overflow-hidden">
             {/* Hero Section */}
-            <section className="min-h-[50vh] flex items-center justify-center relative pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-transparent to-secondary-50 dark:from-primary-900/20 dark:via-transparent dark:to-secondary-900/20">
-                <div className="max-w-5xl mx-auto text-center space-y-4 sm:space-y-6 animate-fade-in-up">
-                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold">
-                        Get In <span className="text-primary-600 dark:text-primary-500">Touch</span>
+            <section className="min-h-[60vh] flex items-center justify-center relative pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-blue-900/20 dark:to-purple-900/20 overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-5">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                    }}></div>
+                </div>
+
+                <div className="max-w-6xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10">
+                    <div className="flex items-center justify-center mb-6">
+                        <div className="p-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full backdrop-blur-sm border border-white/20">
+                            <Mail className="w-10 h-10 sm:w-12 sm:h-12 text-primary" />
+                        </div>
+                    </div>
+                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
+                        Let's <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Connect</span>
                     </h1>
-                    <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                        Have a project in mind? Let's discuss how we can help bring your vision to life.
+                    <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+                        Ready to transform your ideas into reality? Get in touch with our team of experts and let's create something extraordinary together.
                     </p>
+                    <div className="flex flex-wrap justify-center gap-4 pt-4">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <span className="text-sm font-medium">Free Consultation</span>
+                        </div>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
+                            <Clock className="w-4 h-4 text-blue-600" />
+                            <span className="text-sm font-medium">24h Response</span>
+                        </div>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
+                            <Shield className="w-4 h-4 text-purple-600" />
+                            <span className="text-sm font-medium">100% Secure</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             {/* Contact Info Cards */}
-            <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+            <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                        {contactInfo.map((info, index) => (
-                            <a
-                                key={index}
-                                to={info.link}
-                                className="card card-hover card-body items-center text-center p-6"
-                            >
-                                <div className="text-5xl sm:text-6xl mb-3">{info.icon}</div>
-                                <h3 className="text-lg font-bold mb-2">{info.title}</h3>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">{info.content}</p>
-                            </a>
-                        ))}
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
+                        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                            Multiple ways to reach us. Choose what works best for you.
+                        </p>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {contactInfo.map((info, index) => {
+                            const IconComponent = info.icon;
+                            return (
+                                <a
+                                    key={index}
+                                    href={info.link}
+                                    className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
+                                >
+                                    <div className={`inline-flex p-3 rounded-xl ${info.color} bg-opacity-10 group-hover:bg-opacity-20 transition-colors duration-300 mb-4`}>
+                                        <IconComponent className={`w-8 h-8 ${info.color}`} />
+                                    </div>
+                                    <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">{info.title}</h3>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{info.content}</p>
+                                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 mt-2" />
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -314,8 +383,8 @@ function Contact() {
                                 <div key={step} className="flex items-center flex-1">
                                     <div className="flex flex-col items-center flex-1">
                                         <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold transition-all ${currentStep >= step
-                                                ? 'bg-primary-600 text-white'
-                                                : 'bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400'
+                                            ? 'bg-primary-600 text-white'
+                                            : 'bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400'
                                             }`}>
                                             {currentStep > step ? '✓' : step}
                                         </div>
@@ -359,23 +428,28 @@ function Contact() {
                                             </div>
 
                                             <div className="grid sm:grid-cols-2 gap-4">
-                                                {Object.entries(serviceConfigs).map(([key, config]) => (
-                                                    <button
-                                                        key={key}
-                                                        type="button"
-                                                        onClick={() => handleServiceSelect(key)}
-                                                        className={`p-6 border-2 rounded-lg text-left transition-all hover:scale-105 ${formData.serviceType === key
-                                                                ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20'
-                                                                : 'border-gray-200 dark:border-gray-700 hover:border-primary-400'
-                                                            }`}
-                                                    >
-                                                        <div className="text-4xl mb-3">{config.icon}</div>
-                                                        <h3 className="font-bold text-lg mb-1">{config.name}</h3>
-                                                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                                                            Starting from ${config.basePrice.toLocaleString()}
-                                                        </p>
-                                                    </button>
-                                                ))}
+                                                {Object.entries(serviceConfigs).map(([key, config]) => {
+                                                    const IconComponent = config.icon;
+                                                    return (
+                                                        <button
+                                                            key={key}
+                                                            type="button"
+                                                            onClick={() => handleServiceSelect(key)}
+                                                            className={`p-6 border-2 rounded-xl text-left transition-all duration-300 hover:scale-105 hover:shadow-lg ${formData.serviceType === key
+                                                                ? 'border-primary-600 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 shadow-md'
+                                                                : 'border-gray-200 dark:border-gray-700 hover:border-primary-400 bg-white dark:bg-gray-800'
+                                                                }`}
+                                                        >
+                                                            <div className={`inline-flex p-3 rounded-xl mb-4 ${formData.serviceType === key ? 'bg-primary-200 dark:bg-primary-800' : 'bg-gray-100 dark:bg-gray-700'}`}>
+                                                                <IconComponent className={`w-8 h-8 ${formData.serviceType === key ? 'text-primary-700 dark:text-primary-300' : 'text-gray-600 dark:text-gray-400'}`} />
+                                                            </div>
+                                                            <h3 className="font-bold text-lg mb-2">{config.name}</h3>
+                                                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                                                Starting from <span className="font-semibold text-primary">${config.basePrice.toLocaleString()}</span>
+                                                            </p>
+                                                        </button>
+                                                    );
+                                                })}
                                             </div>
 
                                             {formData.serviceType && (
@@ -386,8 +460,8 @@ function Contact() {
                                                             <label
                                                                 key={type.value}
                                                                 className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${formData.projectType === type.value
-                                                                        ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20'
-                                                                        : 'border-gray-200 dark:border-gray-700 hover:border-primary-400'
+                                                                    ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20'
+                                                                    : 'border-gray-200 dark:border-gray-700 hover:border-primary-400'
                                                                     }`}
                                                             >
                                                                 <input
@@ -413,12 +487,10 @@ function Contact() {
                                                     type="button"
                                                     onClick={nextStep}
                                                     disabled={!canProceedStep1}
-                                                    className="btn btn-primary btn-lg"
+                                                    className="btn btn-primary btn-lg group"
                                                 >
                                                     Continue
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                                    </svg>
+                                                    <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
                                                 </button>
                                             </div>
                                         </div>
@@ -486,8 +558,8 @@ function Contact() {
                                                         <label
                                                             key={key}
                                                             className={`p-4 border-2 rounded-lg cursor-pointer text-center transition-all ${formData.complexity === key
-                                                                    ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20'
-                                                                    : 'border-gray-200 dark:border-gray-700 hover:border-primary-400'
+                                                                ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20'
+                                                                : 'border-gray-200 dark:border-gray-700 hover:border-primary-400'
                                                                 }`}
                                                         >
                                                             <input
@@ -523,22 +595,18 @@ function Contact() {
                                             </div>
 
                                             <div className="flex justify-between pt-4">
-                                                <button type="button" onClick={prevStep} className="btn btn-ghost btn-lg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                                                    </svg>
+                                                <button type="button" onClick={prevStep} className="btn btn-ghost btn-lg group">
+                                                    <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
                                                     Back
                                                 </button>
                                                 <button
                                                     type="button"
                                                     onClick={nextStep}
                                                     disabled={!canProceedStep2}
-                                                    className="btn btn-primary btn-lg"
+                                                    className="btn btn-primary btn-lg group"
                                                 >
                                                     Continue
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                                    </svg>
+                                                    <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
                                                 </button>
                                             </div>
                                         </div>
@@ -721,9 +789,9 @@ function Contact() {
 
                         {/* Price Summary Sidebar */}
                         <div className="space-y-6">
-                            <div className="card card-body p-6 sticky top-24 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20">
+                            <div className="card card-body p-6 sticky top-24 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 border border-primary-200 dark:border-primary-800">
                                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                                    <span>💰</span> Project Estimate
+                                    <DollarSign className="w-6 h-6 text-primary" /> Project Estimate
                                 </h3>
 
                                 {formData.estimatedCost > 0 ? (
@@ -850,7 +918,9 @@ function Contact() {
                                     </div>
                                 ) : (
                                     <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-                                        <div className="text-5xl mb-3">📊</div>
+                                        <div className="inline-flex p-4 bg-gray-100 dark:bg-gray-700 rounded-full mb-4">
+                                            <Target className="w-12 h-12" />
+                                        </div>
                                         <p className="text-sm">
                                             Select your service and project type to see estimated pricing
                                         </p>
@@ -944,19 +1014,27 @@ function Contact() {
                             </div>
 
                             <div className="card card-body p-6 sm:p-8 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/40 dark:to-secondary-900/40">
-                                <h3 className="text-xl sm:text-2xl font-bold mb-4">Office Location</h3>
-                                <div className="aspect-video bg-gray-300 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                                <h3 className="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2">
+                                    <Building className="w-6 h-6 text-primary" />
+                                    Office Location
+                                </h3>
+                                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center mb-4 border-2 border-dashed border-gray-300 dark:border-gray-600">
                                     <div className="text-center">
-                                        <div className="text-5xl sm:text-6xl mb-2">🗺️</div>
-                                        <p className="text-gray-600 dark:text-gray-400 text-sm">Map View</p>
+                                        <MapIcon className="w-16 h-16 mx-auto mb-3 text-gray-500" />
+                                        <p className="text-gray-600 dark:text-gray-400 text-sm">Interactive Map Coming Soon</p>
                                     </div>
                                 </div>
-                                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-                                    <strong>Benubina Headquarters</strong><br />
-                                    123 Tech Street<br />
-                                    Silicon Valley, CA 94025<br />
-                                    United States
-                                </p>
+                                <div className="space-y-2">
+                                    <div className="flex items-start gap-3">
+                                        <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                                        <div className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                            <strong>Benubina Headquarters</strong><br />
+                                            123 Tech Street<br />
+                                            Silicon Valley, CA 94025<br />
+                                            United States
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
