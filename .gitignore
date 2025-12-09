@@ -13,12 +13,13 @@
 # testing
 /coverage
 
-# next.js
+# next.js (legacy)
 /.next/
 /out/
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -32,6 +33,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+.env.local
+.env.production
 
 # vercel
 .vercel
@@ -39,3 +42,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# conversion scripts
+convert-page.cjs
+
+# old Next.js app directory
+/app/
