@@ -46,7 +46,7 @@ function Portfolio() {
             description: 'Complete hospital management system with patient records, appointment scheduling, billing, and telemedicine capabilities.',
             technologies: ['React', 'Python', 'Django', 'AWS'],
             icon: Heart,
-            image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             color: 'from-emerald-500 to-teal-600',
             stats: { hospitals: '15', patients: '100K+', uptime: '99.9%' },
             challenge: 'Ensure HIPAA compliance and data security',
@@ -215,112 +215,127 @@ function Portfolio() {
                         </p>
                     </div>
 
-                    <div className="space-y-20">
-                        {projects.map((project, index) => {
-                            const IconComponent = project.icon;
-                            return (
-                                <div
-                                    key={project.id}
-                                    className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
-                                >
-                                    <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                                        <div className="group relative">
-                                            {/* Project Image */}
-                                            <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500">
-                                                <img
-                                                    src={project.image}
-                                                    alt={project.title}
-                                                    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                                                />
-                                                <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                    <div className="relative">
+                        {/* Vertical Timeline Line */}
+                        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary via-secondary to-accent opacity-20 hidden lg:block"></div>
 
-                                                {/* Floating Icon */}
-                                                <div className="absolute top-6 left-6">
-                                                    <div className={`p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                                        <IconComponent className="w-8 h-8 text-gray-800" />
-                                                    </div>
-                                                </div>
-
-                                                {/* Category Badge */}
-                                                <div className="absolute top-6 right-6">
-                                                    <div className="badge badge-primary badge-lg shadow-lg">
-                                                        {project.category}
-                                                    </div>
-                                                </div>
+                        <div className="space-y-20">
+                            {projects.map((project, index) => {
+                                const IconComponent = project.icon;
+                                return (
+                                    <div key={project.id} className="relative">
+                                        {/* Timeline Node */}
+                                        <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 z-10 hidden lg:block">
+                                            <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                <IconComponent className="w-8 h-8 text-white" />
                                             </div>
+                                            {/* Pulse Animation */}
+                                            <div className="absolute inset-0 w-16 h-16 bg-primary rounded-full animate-ping opacity-20"></div>
                                         </div>
-                                    </div>
 
-                                    <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                                        <div className="space-y-6">
-                                            <div>
-                                                <h3 className="text-3xl lg:text-4xl font-bold mb-4">{project.title}</h3>
-                                                <p className="text-lg text-base-content/70 leading-relaxed">{project.description}</p>
-                                            </div>
+                                        <div
+                                            className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} group`}
+                                        >
+                                            <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                                                <div className="group relative">
+                                                    {/* Project Image */}
+                                                    <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500">
+                                                        <img
+                                                            src={project.image}
+                                                            alt={project.title}
+                                                            className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                                                        />
+                                                        <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
 
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                <div className="space-y-3">
-                                                    <div className="flex items-center gap-2 text-primary">
-                                                        <Target className="w-5 h-5" />
-                                                        <h4 className="font-bold">Challenge</h4>
-                                                    </div>
-                                                    <p className="text-base-content/70 text-sm leading-relaxed">{project.challenge}</p>
-                                                </div>
-                                                <div className="space-y-3">
-                                                    <div className="flex items-center gap-2 text-secondary">
-                                                        <Lightbulb className="w-5 h-5" />
-                                                        <h4 className="font-bold">Solution</h4>
-                                                    </div>
-                                                    <p className="text-base-content/70 text-sm leading-relaxed">{project.solution}</p>
-                                                </div>
-                                            </div>
-
-                                            {/* Stats */}
-                                            <div className="card bg-gradient-to-br from-base-200 to-base-300 shadow-lg">
-                                                <div className="card-body p-6">
-                                                    <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                                                        <TrendingUp className="w-5 h-5 text-primary" />
-                                                        Project Impact
-                                                    </h4>
-                                                    <div className="grid grid-cols-3 gap-4">
-                                                        {Object.entries(project.stats).map(([key, value], i) => (
-                                                            <div key={i} className="text-center">
-                                                                <div className="text-2xl font-bold text-primary">{value}</div>
-                                                                <div className="text-sm text-base-content/60 capitalize">
-                                                                    {key.replace(/([A-Z])/g, ' $1').trim()}
-                                                                </div>
+                                                        {/* Floating Icon */}
+                                                        <div className="absolute top-6 left-6">
+                                                            <div className={`p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                                <IconComponent className="w-8 h-8 text-gray-800" />
                                                             </div>
-                                                        ))}
+                                                        </div>
+
+                                                        {/* Category Badge */}
+                                                        <div className="absolute top-6 right-6">
+                                                            <div className="badge badge-primary badge-lg shadow-lg">
+                                                                {project.category}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            {/* Technologies */}
-                                            <div>
-                                                <h4 className="font-bold mb-3 flex items-center gap-2">
-                                                    <Code className="w-5 h-5" />
-                                                    Technologies Used
-                                                </h4>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {project.technologies.map((tech, i) => (
-                                                        <div key={i} className="badge badge-outline badge-lg hover:badge-primary transition-colors">
-                                                            {tech}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
+                                            <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                                                <div className="space-y-6">
+                                                    <div>
+                                                        <h3 className="text-3xl lg:text-4xl font-bold mb-4">{project.title}</h3>
+                                                        <p className="text-lg text-base-content/70 leading-relaxed">{project.description}</p>
+                                                    </div>
 
-                                            <div className="pt-4">
-                                                <Link to="/contact" className="btn btn-primary btn-lg group">
-                                                    Start Similar Project
-                                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                                </Link>
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                        <div className="space-y-3">
+                                                            <div className="flex items-center gap-2 text-primary">
+                                                                <Target className="w-5 h-5" />
+                                                                <h4 className="font-bold">Challenge</h4>
+                                                            </div>
+                                                            <p className="text-base-content/70 text-sm leading-relaxed">{project.challenge}</p>
+                                                        </div>
+                                                        <div className="space-y-3">
+                                                            <div className="flex items-center gap-2 text-secondary">
+                                                                <Lightbulb className="w-5 h-5" />
+                                                                <h4 className="font-bold">Solution</h4>
+                                                            </div>
+                                                            <p className="text-base-content/70 text-sm leading-relaxed">{project.solution}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Stats */}
+                                                    <div className="card bg-gradient-to-br from-base-200 to-base-300 shadow-lg">
+                                                        <div className="card-body p-6">
+                                                            <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                                                                <TrendingUp className="w-5 h-5 text-primary" />
+                                                                Project Impact
+                                                            </h4>
+                                                            <div className="grid grid-cols-3 gap-4">
+                                                                {Object.entries(project.stats).map(([key, value], i) => (
+                                                                    <div key={i} className="text-center">
+                                                                        <div className="text-2xl font-bold text-primary">{value}</div>
+                                                                        <div className="text-sm text-base-content/60 capitalize">
+                                                                            {key.replace(/([A-Z])/g, ' $1').trim()}
+                                                                        </div>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Technologies */}
+                                                    <div>
+                                                        <h4 className="font-bold mb-3 flex items-center gap-2">
+                                                            <Code className="w-5 h-5" />
+                                                            Technologies Used
+                                                        </h4>
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {project.technologies.map((tech, i) => (
+                                                                <div key={i} className="badge badge-outline badge-lg hover:badge-primary transition-colors">
+                                                                    {tech}
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="pt-4">
+                                                        <Link to="/contact" className="btn btn-primary btn-lg group">
+                                                            Start Similar Project
+                                                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                                        </Link>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </section>
