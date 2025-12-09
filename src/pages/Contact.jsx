@@ -242,12 +242,30 @@ function Contact() {
 
     const nextStep = () => {
         setCurrentStep(prev => Math.min(prev + 1, 4));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to form section instead of top
+        const formElement = document.getElementById('contact-form');
+        if (formElement) {
+            const offset = window.innerWidth < 768 ? 100 : 120; // Less offset on mobile
+            const elementPosition = formElement.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+                top: elementPosition - offset,
+                behavior: 'smooth'
+            });
+        }
     };
 
     const prevStep = () => {
         setCurrentStep(prev => Math.max(prev - 1, 1));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to form section instead of top
+        const formElement = document.getElementById('contact-form');
+        if (formElement) {
+            const offset = window.innerWidth < 768 ? 100 : 120; // Less offset on mobile
+            const elementPosition = formElement.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+                top: elementPosition - offset,
+                behavior: 'smooth'
+            });
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -374,7 +392,7 @@ function Contact() {
             </section>
 
             {/* Multi-Step Form Section */}
-            <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
+            <section id="contact-form" className="py-12 sm:py-16 lg:py-24 px-3 sm:px-4 lg:px-8 bg-gray-50 dark:bg-gray-800">
                 <div className="max-w-7xl mx-auto">
                     {/* Progress Indicator */}
                     <div className="mb-8 sm:mb-12">
@@ -405,10 +423,10 @@ function Contact() {
                         </div>
                     </div>
 
-                    <div className="grid lg:grid-cols-3 gap-8">
+                    <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                         {/* Main Form */}
-                        <div className="lg:col-span-2">
-                            <div className="card card-body p-6 sm:p-8">
+                        <div className="lg:col-span-2 order-2 lg:order-1">
+                            <div className="bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700">
                                 {status.message && (
                                     <div className={`alert ${status.type === 'success' ? 'alert-success' : 'alert-error'} mb-6`}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
@@ -423,8 +441,8 @@ function Contact() {
                                     {currentStep === 1 && (
                                         <div className="space-y-6 animate-fade-in-up">
                                             <div>
-                                                <h2 className="text-2xl sm:text-3xl font-bold mb-2">What Service Do You Need?</h2>
-                                                <p className="text-gray-600 dark:text-gray-400">Select the type of service that best fits your project</p>
+                                                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">What Service Do You Need?</h2>
+                                                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Select the type of service that best fits your project</p>
                                             </div>
 
                                             <div className="grid sm:grid-cols-2 gap-4">
@@ -482,15 +500,15 @@ function Contact() {
                                                 </div>
                                             )}
 
-                                            <div className="flex justify-end pt-4">
+                                            <div className="flex justify-end pt-4 sm:pt-6">
                                                 <button
                                                     type="button"
                                                     onClick={nextStep}
                                                     disabled={!canProceedStep1}
-                                                    className="btn btn-primary btn-lg group"
+                                                    className="btn btn-primary w-full sm:w-auto sm:btn-lg group min-h-12 sm:min-h-14"
                                                 >
                                                     Continue
-                                                    <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2 group-hover:translate-x-1 transition-transform" />
                                                 </button>
                                             </div>
                                         </div>
@@ -500,8 +518,8 @@ function Contact() {
                                     {currentStep === 2 && formData.serviceType && (
                                         <div className="space-y-6 animate-fade-in-up">
                                             <div>
-                                                <h2 className="text-2xl sm:text-3xl font-bold mb-2">Define Your Project Scope</h2>
-                                                <p className="text-gray-600 dark:text-gray-400">Tell us more about what you need</p>
+                                                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">Define Your Project Scope</h2>
+                                                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Tell us more about what you need</p>
                                             </div>
 
                                             <div>
@@ -594,19 +612,19 @@ function Contact() {
                                                 </select>
                                             </div>
 
-                                            <div className="flex justify-between pt-4">
-                                                <button type="button" onClick={prevStep} className="btn btn-ghost btn-lg group">
-                                                    <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                                            <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4 pt-4 sm:pt-6">
+                                                <button type="button" onClick={prevStep} className="btn btn-ghost w-full sm:w-auto sm:btn-lg group order-2 sm:order-1">
+                                                    <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
                                                     Back
                                                 </button>
                                                 <button
                                                     type="button"
                                                     onClick={nextStep}
                                                     disabled={!canProceedStep2}
-                                                    className="btn btn-primary btn-lg group"
+                                                    className="btn btn-primary w-full sm:w-auto sm:btn-lg group order-1 sm:order-2 min-h-12 sm:min-h-14"
                                                 >
                                                     Continue
-                                                    <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2 group-hover:translate-x-1 transition-transform" />
                                                 </button>
                                             </div>
                                         </div>
@@ -616,8 +634,8 @@ function Contact() {
                                     {currentStep === 3 && (
                                         <div className="space-y-6 animate-fade-in-up">
                                             <div>
-                                                <h2 className="text-2xl sm:text-3xl font-bold mb-2">Additional Services</h2>
-                                                <p className="text-gray-600 dark:text-gray-400">Enhance your project with these optional services</p>
+                                                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">Additional Services</h2>
+                                                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Enhance your project with these optional services</p>
                                             </div>
 
                                             <div className="space-y-3">
@@ -788,7 +806,7 @@ function Contact() {
                         </div>
 
                         {/* Price Summary Sidebar */}
-                        <div className="space-y-6">
+                        <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
                             <div className="card card-body p-6 sticky top-24 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 border border-primary-200 dark:border-primary-800">
                                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                                     <DollarSign className="w-6 h-6 text-primary" /> Project Estimate
