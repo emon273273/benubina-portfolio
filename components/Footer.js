@@ -1,7 +1,7 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear()
 
     const footerLinks = {
         company: [
@@ -22,7 +22,7 @@ export default function Footer() {
             { name: 'FAQs', path: '#' },
             { name: 'Support', path: '/contact' },
         ],
-    };
+    }
 
     return (
         <footer className="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
@@ -141,5 +141,5 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
-    );
+    )
 }

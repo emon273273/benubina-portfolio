@@ -1,21 +1,27 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import ThemeToggle from './ThemeToggle';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const pathname = usePathname()
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
+            setIsScrolled(window.scrollY > 50)
+        }
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    useEffect(() => {
+        setIsMobileMenuOpen(false)
+    }, [pathname])
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -23,13 +29,13 @@ export default function Navbar() {
         { name: 'Who We Are', path: '/who-we-are' },
         { name: 'Portfolio', path: '/portfolio' },
         { name: 'Contact', path: '/contact' },
-    ];
+    ]
 
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-lg'
-                    : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm'
+                ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-lg'
+                : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +52,10 @@ export default function Navbar() {
                             <Link
                                 key={link.path}
                                 href={link.path}
-                                className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 font-medium"
+                                className={`px-4 py-2 rounded-lg transition-all duration-300 font-medium ${pathname === link.path
+                                    ? 'text-primary-600 dark:text-primary-500 bg-gray-100 dark:bg-gray-800'
+                                    : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                    }`}
                             >
                                 {link.name}
                             </Link>
@@ -90,16 +99,17 @@ export default function Navbar() {
                                 <Link
                                     key={link.path}
                                     href={link.path}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 font-medium"
+                                    className={`px-4 py-3 rounded-lg transition-all duration-300 font-medium ${pathname === link.path
+                                        ? 'text-primary-600 dark:text-primary-500 bg-gray-100 dark:bg-gray-800'
+                                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                        }`}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                             <Link
                                 href="/contact"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="mt-2 btn btn-primary w-full justify-center"
+                                className="btn btn-primary w-full mt-2"
                             >
                                 Get Started
                             </Link>
@@ -108,5 +118,5 @@ export default function Navbar() {
                 )}
             </div>
         </nav>
-    );
+    )
 }

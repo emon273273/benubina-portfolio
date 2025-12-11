@@ -13,7 +13,7 @@
 # testing
 /coverage
 
-# next.js (legacy)
+# next.js
 /.next/
 /out/
 
@@ -43,8 +43,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# conversion scripts
-convert-page.cjs
-
-# old Next.js app directory
-/app/
+# old Vite files
+index.html
+vite.config.js

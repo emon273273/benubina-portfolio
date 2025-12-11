@@ -1,53 +1,91 @@
-import Link from 'next/link';
-import Image from 'next/image';
+'use client'
 
-export const metadata = {
-  title: "Home",
-  description: "Transform your business with innovative software solutions. We build custom web applications, mobile apps, and enterprise software.",
-};
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { Globe, Smartphone, Palette, Cloud, Shield, Bot, Sparkles, Zap, Target, Handshake, Rocket } from 'lucide-react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 export default function Home() {
+  useEffect(() => {
+    document.title = 'Home - Benubina | Software Development Agency'
+  }, [])
+
   const stats = [
     { number: '150+', label: 'Projects Completed' },
     { number: '50+', label: 'Happy Clients' },
     { number: '10+', label: 'Years Experience' },
     { number: '25+', label: 'Team Members' },
-  ];
+  ]
 
   const services = [
     {
-      icon: '🌐',
+      icon: Globe,
       title: 'Web Development',
       description: 'Custom web applications built with modern technologies for optimal performance and scalability.',
     },
     {
-      icon: '📱',
+      icon: Smartphone,
       title: 'Mobile Apps',
       description: 'Native and cross-platform mobile applications for iOS and Android devices.',
     },
     {
-      icon: '🎨',
+      icon: Palette,
       title: 'UI/UX Design',
       description: 'Beautiful, intuitive designs that provide exceptional user experiences.',
     },
     {
-      icon: '☁️',
+      icon: Cloud,
       title: 'Cloud Solutions',
       description: 'Scalable cloud infrastructure and deployment solutions for your applications.',
     },
     {
-      icon: '🔒',
+      icon: Shield,
       title: 'Cybersecurity',
       description: 'Comprehensive security solutions to protect your digital assets.',
     },
     {
-      icon: '🤖',
+      icon: Bot,
       title: 'AI Integration',
       description: 'Leverage artificial intelligence to automate and enhance your business processes.',
     },
-  ];
+  ]
 
   const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      role: 'CEO, TechStart',
+      content: 'Benubina transformed our vision into reality. Their expertise and dedication exceeded our expectations.',
+      avatar: '👩‍💼',
+    },
+    {
+      name: 'Sarah Johnson',
+      role: 'CEO, TechStart',
+      content: 'Benubina transformed our vision into reality. Their expertise and dedication exceeded our expectations.',
+      avatar: '👩‍💼',
+    },
+    {
+      name: 'Sarah Johnson',
+      role: 'CEO, TechStart',
+      content: 'Benubina transformed our vision into reality. Their expertise and dedication exceeded our expectations.',
+      avatar: '👩‍💼',
+    },
+    {
+      name: 'Sarah Johnson',
+      role: 'CEO, TechStart',
+      content: 'Benubina transformed our vision into reality. Their expertise and dedication exceeded our expectations.',
+      avatar: '👩‍💼',
+    },
+
+    {
+      name: 'Sarah Johnson',
+      role: 'CEO, TechStart',
+      content: 'Benubina transformed our vision into reality. Their expertise and dedication exceeded our expectations.',
+      avatar: '👩‍💼',
+    },
     {
       name: 'Sarah Johnson',
       role: 'CEO, TechStart',
@@ -66,7 +104,7 @@ export default function Home() {
       content: 'The team at Benubina is incredibly talented. They turned our complex requirements into elegant solutions.',
       avatar: '👩‍🔬',
     },
-  ];
+  ]
 
   return (
     <div className="overflow-hidden">
@@ -75,7 +113,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-transparent to-secondary-50 dark:from-primary-900/20 dark:via-transparent dark:to-secondary-900/20 -z-10" />
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
           <div className="space-y-6 lg:space-y-8 animate-fade-in-up">
-            <div className="badge badge-primary badge-lg">🚀 Leading Software Agency</div>
+            <div className="badge badge-primary badge-lg"><Rocket className="inline w-5 h-5 mr-1" /> Leading Software Agency</div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
               Transform Your
               <span className="text-primary-600 dark:text-primary-500"> Vision </span>
@@ -97,23 +135,11 @@ export default function Home() {
             </div>
           </div>
           <div className="relative animate-slide-in-right">
-            {/* Replace with actual hero image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <div className="aspect-square bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/40 dark:to-secondary-900/40 flex items-center justify-center">
                 <div className="text-9xl animate-float">
-                  <Image src={"/images/hero/hero.jpg"} alt="Software Development"
-                    width={900}
-                    height={900} className="object-cover" />
+                  <img src="/images/hero/hero.jpg" alt="Software Development" className="w-full h-full object-cover" />
                 </div>
-                {/* Uncomment when you add hero image */}
-                {/* <Image
-                  src="/images/hero/main-hero.jpg"
-                  alt="Software Development"
-                  width={600}
-                  height={600}
-                  className="object-cover"
-                  priority
-                /> */}
               </div>
             </div>
           </div>
@@ -153,9 +179,7 @@ export default function Home() {
                 key={index}
                 className="card card-hover card-body p-6 sm:p-8 group"
               >
-                <div className="text-5xl sm:text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
+                <service.icon className="text-5xl sm:text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{service.description}</p>
               </div>
@@ -176,7 +200,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 sm:space-y-8">
               <div className="flex gap-4 items-start">
-                <div className="text-3xl sm:text-4xl flex-shrink-0">✨</div>
+                <Sparkles className="text-3xl sm:text-4xl flex-shrink-0" />
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold mb-2">Innovative Solutions</h3>
                   <p className="text-gray-600 dark:text-gray-400">
@@ -185,7 +209,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex gap-4 items-start">
-                <div className="text-3xl sm:text-4xl flex-shrink-0">⚡</div>
+                <Zap className="text-3xl sm:text-4xl flex-shrink-0" />
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold mb-2">Fast Delivery</h3>
                   <p className="text-gray-600 dark:text-gray-400">
@@ -194,7 +218,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex gap-4 items-start">
-                <div className="text-3xl sm:text-4xl flex-shrink-0">🎯</div>
+                <Target className="text-3xl sm:text-4xl flex-shrink-0" />
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold mb-2">Result-Oriented</h3>
                   <p className="text-gray-600 dark:text-gray-400">
@@ -203,7 +227,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex gap-4 items-start">
-                <div className="text-3xl sm:text-4xl flex-shrink-0">🤝</div>
+                <Handshake className="text-3xl sm:text-4xl flex-shrink-0" />
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold mb-2">Dedicated Support</h3>
                   <p className="text-gray-600 dark:text-gray-400">
@@ -215,15 +239,7 @@ export default function Home() {
             <div className="relative order-first lg:order-last">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <div className="aspect-square bg-gradient-to-br from-primary-200 to-secondary-200 dark:from-primary-800/40 dark:to-secondary-800/40 flex items-center justify-center">
-                  <div className="text-8xl sm:text-9xl"> <Image
-                    src="/images/hero/11127054.jpg"
-                    alt="Why Choose Us"
-                    width={700}
-                    height={700}
-                    className="object-cover"
-                  /></div>
-                  {/* Replace with actual image */}
-
+                  <img src="/images/hero/11127054.jpg" alt="Why Choose Us" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -232,7 +248,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">What Our Clients Say</h2>
@@ -240,20 +256,40 @@ export default function Home() {
               Don't just take our word for it
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={35}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="pb-12"
+          >
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="card card-body p-6 sm:p-8">
-                <div className="text-5xl sm:text-6xl mb-4">{testimonial.avatar}</div>
-                <p className="text-gray-600 dark:text-gray-400 italic mb-4 leading-relaxed">
-                  "{testimonial.content}"
-                </p>
-                <div className="mt-auto">
-                  <h4 className="font-bold text-gray-900 dark:text-gray-100">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-500">{testimonial.role}</p>
+              <SwiperSlide key={index}>
+                <div className="card card-body p-6 sm:p-8 h-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0">
+                  <div className="text-5xl sm:text-6xl mb-4 opacity-80">{testimonial.avatar}</div>
+                  <div className="text-4xl text-primary-500 mb-4">"</div>
+                  <p className="text-gray-600 dark:text-gray-400 italic mb-4 leading-relaxed flex-grow">
+                    {testimonial.content}
+                  </p>
+                  <div className="text-4xl text-primary-500 mb-4 self-end">"</div>
+                  <div className="mt-auto border-t pt-4">
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-500">{testimonial.role}</p>
+                  </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </section>
 
@@ -275,5 +311,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  );
+  )
 }
