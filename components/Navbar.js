@@ -28,6 +28,7 @@ export default function Navbar() {
         { name: 'About Us', path: '/about' },
         { name: 'Who We Are', path: '/who-we-are' },
         { name: 'Portfolio', path: '/portfolio' },
+        { name: 'Blog', path: '/blogs' },
         { name: 'Contact', path: '/contact' },
     ]
 
